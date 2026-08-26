@@ -1,0 +1,48 @@
+Generate a LAOS DSP-style report from the transcript below using the frozen Whiteboard One and checkpoint references.
+
+=== FROZEN WHITEBOARD ONE ===
+{{WHITEBOARD_ONE_TEXT}}
+
+=== CHECKPOINT REFERENCE ===
+{{CHECKPOINT_TEXT}}
+
+=== REQUEST CONTEXT ===
+Patient: {{PATIENT_NAME}}
+Age: {{AGE_OR_UNKNOWN}}
+Gender: {{GENDER_OR_UNKNOWN}}
+Language: {{LANGUAGE}}
+Intake type: {{INTAKE_TYPE}}
+Reference: {{REFERENCE_OR_UNKNOWN}}
+
+=== TRANSCRIPT ===
+{{TRANSCRIPT_TEXT}}
+
+=== OUTPUT REQUIREMENTS ===
+Return a report that follows this section order:
+
+1. DSP Identification
+2. Executive Summary
+3. Presenting Concerns
+4. Background and History
+5. Clinical Themes
+6. Clinical Observations
+7. Risk Formulation
+8. Protective Factors
+9. Reasoning Model
+10. Evidence Model
+11. Questions Asked and Why
+12. Confidence Score
+13. Keywords / Themes / Notes
+14. Reviewer Considerations
+15. Facilitator Summary
+16. Clinical Working Notes
+
+Rules:
+- Keep the framework frozen.
+- Use only transcript-supported information and supplied metadata.
+- If a section detail is missing, write Unknown or Not stated.
+- Separate evidence from inference.
+- Keep patient wording visible where useful.
+- Keep the report concise, clinically grounded, and useful to a facilitator.
+- Do not overstate certainty.
+

@@ -4,8 +4,10 @@ import fs from "node:fs";
 import path from "node:path";
 import express from "express";
 import multer from "multer";
+import swaggerUi from "swagger-ui-express";
 import { extractLaosReport } from "./extract-report.js";
 import { createReportPdf } from "./pdf.js";
+import { openApiSpec } from "./openapi.js";
 
 const app = express();
 const root = path.resolve(import.meta.dirname, "..");
@@ -14,6 +16,8 @@ const outputDir = path.join(root, "output", "pdf");
 fs.mkdirSync(uploadDir, { recursive: true }); fs.mkdirSync(outputDir, { recursive: true });
 const upload = multer({ dest: uploadDir, limits: { fileSize: 2 * 1024 * 1024 }, fileFilter: (_r, f, cb) => cb(null, f.mimetype === "text/plain" || f.originalname.toLowerCase().endsWith(".txt")) });
 app.use(express.static(path.join(root, "public")));
+app.get("/api-docs.json", (_req, res) => res.json(openApiSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openApiSpec, { customSiteTitle: "WannaTalk LAOS API" }));
 
 app.post("/api/reports", upload.single("transcript"), async (req, res) => {
   const uploadedPath = req.file?.path;
