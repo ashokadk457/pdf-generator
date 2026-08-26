@@ -16,7 +16,13 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
   doc.pipe(stream);
   const left = 50, width = doc.page.width - 100;
 
-  function newPage() { doc.addPage(); doc.y = 70; }
+  function staticHeader() {
+    doc.x = left; doc.y = 0;
+    doc.font("Helvetica-Bold").fontSize(9).fillColor(NAVY).text("WannaTalk | LAOS Intake Report", left, 25, { lineBreak: false });
+    doc.moveTo(left, 39).lineTo(doc.page.width - left, 39).lineWidth(1.5).strokeColor(NAVY).stroke();
+    doc.y = 70;
+  }
+  function newPage() { doc.addPage(); staticHeader(); }
   function ensure(space = 80) { if (doc.y > doc.page.height - space) newPage(); }
   function heading(n, title) { ensure(75); doc.moveDown(.25).font("Helvetica-Bold").fontSize(14).fillColor(NAVY).text(`${n}. ${title}`); doc.moveDown(.3); }
   function box(value) {
@@ -30,15 +36,17 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
     for (const value of source) { ensure(70); const rendered = Array.isArray(values) && values.length ? formatter(value) : text(value); doc.font("Helvetica").fontSize(9.2).fillColor("#263D49").text(`- ${rendered}`, left, doc.y, { width }); doc.moveDown(.2); }
   }
 
+  staticHeader();
   if (logoPath && fs.existsSync(logoPath)) { try { doc.image(logoPath, doc.page.width / 2 - 65, 64, { fit: [130, 56] }); } catch {} }
   doc.y = logoPath && fs.existsSync(logoPath) ? 132 : 76;
   doc.font("Helvetica-Bold").fontSize(22).fillColor(NAVY).text(text(report.reportTitle, "WannaTalk"), { align: "center" });
   doc.font("Helvetica").fontSize(10.5).fillColor(MUTED).text(text(report.reportSubtitle, "Intake report for clinical review"), { align: "center" }); doc.moveDown(1);
 
+  const identification = report.dspIdentification || {};
   const profile = [
-    ["Patient", metadata.patientName || report.patientName], ["Age", metadata.age], ["Gender", metadata.gender],
-    ["Language", metadata.language || report.language], ["Intake type", metadata.intakeType],
-    ["Reference", metadata.referenceNumber || report.caseCode], ["Contact", [metadata.email, metadata.phone].filter(Boolean).join(" / ")]
+    ["Patient", metadata.patientName || identification.patientName], ["Age", metadata.age || identification.age], ["Gender", metadata.gender || identification.gender],
+    ["Language", metadata.language || identification.language], ["Intake type", metadata.intakeType || identification.intakeType],
+    ["Reference", metadata.referenceNumber || identification.reference], ["Contact", [metadata.email, metadata.phone].filter(Boolean).join(" / ")]
   ];
   const y0 = doc.y, rh = 23;
   profile.forEach(([label, value], i) => { const y = y0 + i * rh; doc.rect(left, y, 100, rh).strokeColor(BORDER).stroke(); doc.rect(left + 100, y, width - 100, rh).strokeColor(BORDER).stroke(); doc.font("Helvetica-Bold").fontSize(8.8).fillColor(NAVY).text(label, left + 8, y + 7); doc.font("Helvetica").fillColor("#263D49").text(text(value), left + 108, y + 7, { width: width - 116 }); });
@@ -46,7 +54,7 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
 
   heading(1, "Executive Summary"); box(report.executiveSummary);
   heading(2, "Presenting Concerns"); bullets(report.presentingConcerns, x => `${text(x.label)} - Evidence: ${text(x.evidence)}`);
-  heading(3, "Background and History"); bullets(report.backgroundHistory, x => `${text(x.label)}: ${text(x.details)} - Evidence: ${text(x.evidence)}`);
+  heading(3, "Background and History"); bullets(report.backgroundAndHistory, x => `${text(x.label)}: ${text(x.details)} - Evidence: ${text(x.evidence)}`);
   newPage(); heading(4, "Clinical Themes"); bullets(report.clinicalThemes, x => `${text(x.theme)} - ${text(x.meaning)} - Evidence: ${text(x.evidence)}`);
   heading(5, "Clinical Observations"); bullets(report.clinicalObservations, x => `${text(x.observation)} - Implication: ${text(x.clinicalImplication)} - Evidence: ${text(x.evidence)}`);
   heading(6, "Risk Formulation"); box(`Risk level: ${text(report.riskFormulation?.riskLevel, "Unknown")}\n\n${text(report.riskFormulation?.summary)}`);
@@ -56,7 +64,11 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
   heading(9, "Evidence Model"); bullets(report.evidenceModel, x => `${text(x.claim)} - ${text(x.supportingEvidence)}`);
   heading(10, "Questions Asked and Why"); bullets(report.questionsAskedAndWhy, x => `${text(x.question)} - Why: ${text(x.whyAsked)} - Answer/evidence: ${text(x.answerEvidence)}`, "No questions were recorded in the transcript.");
   heading(11, "Confidence Score"); box(`${Number(report.confidenceScore || 0).toFixed(0)}%`);
-  heading(12, "Keywords / Themes / Notes"); bullets(report.keywords);
+  heading(12, "Keywords / Themes / Notes"); bullets([
+    ...(report.keywordsThemesNotes?.keywords || []).map(x => `Keyword: ${x}`),
+    ...(report.keywordsThemesNotes?.themes || []).map(x => `Theme: ${x}`),
+    ...(report.keywordsThemesNotes?.notes || []).map(x => `Note: ${x}`)
+  ]);
   heading(13, "Reviewer Considerations"); bullets(report.reviewerConsiderations);
   ensure(180); heading(14, "Facilitator Summary"); box(report.facilitatorSummary);
   ensure(170); heading(15, "Clinical Working Notes"); box(report.clinicalWorkingNotes);
@@ -68,7 +80,7 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
   }
 
   const range = doc.bufferedPageRange();
-  for (let i = range.start; i < range.start + range.count; i++) { doc.switchToPage(i); doc.x = left; doc.y = 0; doc.font("Helvetica").fontSize(8).fillColor(MUTED).text(`Page ${i + 1} of ${range.count}`, doc.page.width - 105, 25, { width: 55, align: "right", lineBreak: false }); doc.font("Helvetica-Bold").fontSize(9).fillColor(NAVY).text("WannaTalk | LAOS Intake Report", left, 25, { lineBreak: false }); doc.moveTo(left, 39).lineTo(doc.page.width - left, 39).lineWidth(1.5).strokeColor(NAVY).stroke(); doc.font("Helvetica").fontSize(8).fillColor(MUTED).text("Talk it out. You are not alone.", left, doc.page.height - 30, { width, align: "center", lineBreak: false }); }
+  for (let i = range.start; i < range.start + range.count; i++) { doc.switchToPage(i); doc.x = left; doc.y = 0; doc.font("Helvetica").fontSize(8).fillColor(MUTED).text(`Page ${i + 1} of ${range.count}`, doc.page.width - 105, 25, { width: 55, align: "right", lineBreak: false }); doc.text("Talk it out. You are not alone.", left, doc.page.height - 30, { width, align: "center", lineBreak: false }); }
   doc.end();
   return new Promise((resolve, reject) => { stream.on("finish", resolve); stream.on("error", reject); });
 }

@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { LAOS_REPORT_JSON_SCHEMA, buildLaosReportInstructions } from "./laos-report-schema.js";
+import { REPORT_SCHEMA } from "./laos-report-schema.js";
 
 export async function extractLaosReport({ transcriptText, metadata, reportStyle = "wendy", includeFaithSection = false }) {
   if (!process.env.OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not configured");
@@ -10,7 +10,6 @@ export async function extractLaosReport({ transcriptText, metadata, reportStyle 
   const response = await client.responses.create({
     model: process.env.OPENAI_MODEL || "gpt-5-mini",
     store: false,
-    instructions: buildLaosReportInstructions({ style: reportStyle, includeFaithSection }),
     input: [{
       role: "user",
       content: [{
@@ -27,9 +26,9 @@ export async function extractLaosReport({ transcriptText, metadata, reportStyle 
     text: {
       format: {
         type: "json_schema",
-        name: LAOS_REPORT_JSON_SCHEMA.name,
-        schema: LAOS_REPORT_JSON_SCHEMA.schema,
-        strict: true
+        name: REPORT_SCHEMA.name,
+        schema: REPORT_SCHEMA.schema,
+        strict: REPORT_SCHEMA.strict
       }
     }
   });

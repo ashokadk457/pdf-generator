@@ -1,6 +1,6 @@
 # WannaTalk LAOS Report Generator
 
-This Node.js service accepts patient metadata and a `.txt` transcript, instructs the OpenAI Responses API with the supplied Wendy-style LAOS schema, and generates a branded PDF in the supplied 15-section template format.
+This Node.js service accepts patient metadata and a `.txt` transcript, instructs the OpenAI Responses API with the client-supplied LAOS DSP schema (`laos_dsp_style_report_v1`) exactly as provided, and generates a branded PDF in the supplied 15-section template format.
 
 ## Run
 
