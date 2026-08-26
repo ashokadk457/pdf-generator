@@ -4,7 +4,6 @@ import OpenAI from "openai";
 
 const require = createRequire(import.meta.url);
 const { LAOS_DSP_REPORT_SCHEMA_V2 } = require("./laos_report_schema_v2.cjs");
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "local-key", baseURL: process.env.OPENAI_BASE_URL || "http://127.0.0.1:8080/v1" });
 const [systemPrompt, userPromptTemplate, whiteboardText, checkpointText] = await Promise.all([
   fs.readFile(new URL("../laos/laos_system_prompt.txt", import.meta.url), "utf8"),
   fs.readFile(new URL("../laos/laos_user_prompt_template.txt", import.meta.url), "utf8"),
@@ -19,9 +18,11 @@ function fillTemplate(template, values) {
 export async function extractLaosReport({ transcriptText, metadata = {} }) {
   const transcript = String(transcriptText || "").trim();
   if (!transcript) throw new Error("Transcript text is required");
+  if (!process.env.OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not configured");
+  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   const userPrompt = fillTemplate(userPromptTemplate, { whiteboardText, checkpointText, transcriptText: transcript, patientName: metadata.patientName || "Unknown", age: metadata.age || "Unknown", gender: metadata.gender || "Unknown", language: metadata.language || "en", intakeType: metadata.intakeType || "Unknown", reference: metadata.referenceNumber || "Unknown" });
   const response = await client.responses.create({
-    model: process.env.LAOS_MODEL || "laos-local-llm", temperature: 0.2, max_output_tokens: 1800,
+    model: process.env.OPENAI_MODEL || "gpt-5-mini", temperature: 0.2, max_output_tokens: 1800,
     input: [{ role: "system", content: [{ type: "text", text: systemPrompt }] }, { role: "user", content: [{ type: "text", text: userPrompt }] }],
     text: { format: { type: "json_schema", name: LAOS_DSP_REPORT_SCHEMA_V2.name, strict: true, schema: LAOS_DSP_REPORT_SCHEMA_V2.schema } },
   });
