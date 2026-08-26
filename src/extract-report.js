@@ -23,7 +23,7 @@ export async function extractLaosReport({ transcriptText, metadata = {} }) {
   const userPrompt = fillTemplate(userPromptTemplate, { whiteboardText, checkpointText, transcriptText: transcript, patientName: metadata.patientName || "Unknown", age: metadata.age || "Unknown", gender: metadata.gender || "Unknown", language: metadata.language || "en", intakeType: metadata.intakeType || "Unknown", reference: metadata.referenceNumber || "Unknown" });
   const response = await client.responses.create({
     model: process.env.OPENAI_MODEL || "gpt-5-mini", temperature: 0.2, max_output_tokens: 1800,
-    input: [{ role: "system", content: [{ type: "text", text: systemPrompt }] }, { role: "user", content: [{ type: "text", text: userPrompt }] }],
+    input: [{ role: "system", content: [{ type: "input_text", text: systemPrompt }] }, { role: "user", content: [{ type: "input_text", text: userPrompt }] }],
     text: { format: { type: "json_schema", name: LAOS_DSP_REPORT_SCHEMA_V2.name, strict: true, schema: LAOS_DSP_REPORT_SCHEMA_V2.schema } },
   });
   if (!response.output_text) throw new Error("The LAOS API returned no report content");
