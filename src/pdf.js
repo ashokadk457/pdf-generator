@@ -31,7 +31,7 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
   }
   function bullets(values, formatter = (x) => text(x), fallback) {
     const source = Array.isArray(values) && values.length ? values : [fallback || "Not available from the supplied information"];
-    for (const value of source) { ensure(70); const rendered = Array.isArray(values) && values.length ? formatter(value) : text(value); doc.font("Helvetica").fontSize(9.2).fillColor("#263D49").text(`- ${rendered}`, left, doc.y, { width }); doc.moveDown(.2); }
+    for (const value of source) { ensure(70); const rendered = Array.isArray(values) && values.length ? formatter(value) : text(value); doc.font("Helvetica").fontSize(9.2).fillColor("#263D49").text(`• ${rendered}`, left, doc.y, { width }); doc.moveDown(.2); }
   }
 
   doc.x = left; doc.y = 70;
