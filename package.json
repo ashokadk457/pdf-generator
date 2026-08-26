@@ -1,6 +1,6 @@
 {
-  "name": "wannatalk-intake-pdf",
-  "version": "1.0.0",
+  "name": "wannatalk-laos-report-generator",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,10 +9,10 @@
     "sample": "node scripts/generate-sample.js"
   },
   "dependencies": {
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0",
-    "multer": "^2.0.2",
-    "openai": "^5.16.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.2.0",
+    "openai": "^5.23.2",
     "pdfkit": "^0.17.2"
   }
 }
