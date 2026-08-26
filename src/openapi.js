@@ -10,7 +10,7 @@ export const openApiSpec = {
     "/api/reports": {
       post: {
         summary: "Generate a LAOS PDF report",
-        description: "Sends the transcript through the configured LAOS-compatible Responses API and returns the generated PDF.",
+        description: "Sends the transcript through the official OpenAI Node SDK and Responses API, then returns the generated PDF.",
         operationId: "generateLaosReport",
         requestBody: {
           required: true,
