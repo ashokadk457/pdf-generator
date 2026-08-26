@@ -1,0 +1,25 @@
+import path from "node:path";
+import { createReportPdf } from "../src/pdf.js";
+
+const metadata = { patientName: "Wendy Bowley", referenceNumber: "WT-1787572447114", email: "wendybowley0@gmail.com", phone: "0767691279", intakeType: "text" };
+const report = {
+  age: 51, gender: "Female", language: "English", languageBasis: "inferred",
+  executiveSummary: "The patient describes longstanding emotional pain connected to an adverse and emotionally neglectful childhood. She reports persistent difficulty with attachment, relationships, loneliness, and believing that she is loved. A later autism diagnosis reframed her understanding of her history, while sustained engagement with healing approaches and meaning-seeking indicate insight and motivation for support.",
+  presentingConcerns: ["Longstanding emotional pain", "Loneliness and difficulty navigating relationships", "Difficulty experiencing self-love and feeling loved", "Impact of an adverse childhood", "Adjustment and meaning-making following an autism diagnosis"],
+  backgroundHistory: "The patient reports being one of six children, including an identical twin, across two marriages. She describes both parents as alcohol-dependent, cruel, and absent, with financial control and markedly different household circumstances contributing to insecurity and feeling like an outsider. She reports an autism diagnosis at age 44 and many years of engagement with healing modalities.",
+  clinicalThemes: ["Emotional neglect and abandonment", "Attachment and belonging", "Self-worth", "Loneliness", "Autism-related reinterpretation of life history", "Healing and meaning-seeking"],
+  clinicalObservations: ["The written narrative is reflective and coherent.", "The account links early relational experiences with current self-worth and relationship difficulties.", "Mood, affect, appearance, and behaviour cannot be directly observed from a text transcript alone."],
+  riskFormulation: { level: "unknown", summary: "The transcript describes emotional pain, loneliness, and relational vulnerability. It does not document a direct assessment of current safety, self-harm, suicidal ideation, or immediate danger; a definitive current risk level therefore cannot be assigned from this text alone.", currentSafetyAssessed: false, warningSigns: ["Longstanding emotional distress", "Social and relational isolation", "Difficulty with self-worth"], followUp: ["Assess current safety directly", "Clarify current functioning and support network", "Explore coping strategies and escalation needs"] },
+  protectiveFactors: ["Actively seeking help", "Sustained engagement in healing modalities", "Insight and reflective capacity", "Meaning-seeking", "Expressed capacity to love and connect"],
+  reasoningModel: "A cautious working formulation is that repeated childhood absence, cruelty, and inconsistent belonging may have shaped expectations of attachment and worth. The patient explicitly connects these experiences with present relationship difficulties and self-love. The autism diagnosis provides an additional framework through which she interprets her history. Current functioning and safety remain to be clarified.",
+  evidenceModel: [{ excerpt: "It was a really tough and a lonely time", supports: "childhood loneliness" }, { excerpt: "I struggle to grasp the concept that I am loved", supports: "attachment and self-worth difficulty" }, { excerpt: "I have spent many years doing many different healing modalities", supports: "active engagement in healing" }, { excerpt: "I got diagnosed with Autism at 44", supports: "autism diagnosis and reinterpretation" }],
+  questionsAskedAndWhy: [], confidenceScore: 85,
+  confidenceRationale: "Core history and themes are explicitly described, but language is inferred and current safety, functioning, and recorded interviewer questions are absent.",
+  keywords: ["loneliness", "attachment", "emotional neglect", "self-worth", "relationships", "autism", "healing", "meaning"],
+  reviewerConsiderations: ["Assess current emotional safety and coping directly", "Explore the impact of childhood experiences on current relationships", "Clarify current support structures", "Consider autism-informed support"],
+  facilitatorSummary: "The patient describes a long history of relational hurt and loneliness rooted in childhood absence and cruelty. She links this history to difficulty trusting that she is loved and navigating relationships. Her autism diagnosis helped her reinterpret her experience. She shows insight, persistence, and motivation for healing, while current safety and day-to-day functioning require direct follow-up.",
+  clinicalWorkingNotes: "Working summary based on the submitted transcript, not a diagnosis. Review the original transcript and directly assess safety, functioning, supports, and the patient's current goals at follow-up. No interviewer questions or workflow details were available in the transcript."
+};
+const outputPath = path.resolve("output/pdf/WannaTalk-WT-1787572447114-sample.pdf");
+await createReportPdf({ metadata, report, logoPath: process.env.LOGO_PATH || "", outputPath });
+console.log(outputPath);

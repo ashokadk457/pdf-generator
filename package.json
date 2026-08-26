@@ -1,0 +1,18 @@
+{
+  "name": "wannatalk-intake-pdf",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "sample": "node scripts/generate-sample.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "openai": "^5.16.0",
+    "pdfkit": "^0.17.2"
+  }
+}
