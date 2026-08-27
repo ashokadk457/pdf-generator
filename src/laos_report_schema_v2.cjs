@@ -168,7 +168,7 @@ const LAOS_REPORT_JSON_SCHEMA = {
   },
 };
 
-function buildLaosReportInstructions({ style = "wendy", includeFaithSection = false } = {}) {
+function buildLaosReportInstructions({ includeFaithSection = false } = {}) {
   const faithNote = includeFaithSection
     ? [
         "If the transcript clearly includes faith, prayer, scripture, God, Jesus, Trinity, church, or Christian counsel, include a faithAndMeaning section.",
@@ -179,14 +179,15 @@ function buildLaosReportInstructions({ style = "wendy", includeFaithSection = fa
   return [
     "You are writing a clinically grounded LAOS intake report in the Wendy-style format.",
     "Use only what is supported by the transcript and intake data. Do not add generic filler.",
+    "Do not guess age, sex, diagnosis, family structure, or background unless the transcript or intake data states it plainly.",
+    "Do not guess patient identifiers. If the intake data provides a patient name or case code, use those exactly and never replace them with a transcript inference.",
     "Prefer concise, specific, evidence-linked language over broad summaries.",
     "Preserve the order and tone of a structured clinical report.",
     "Make the report useful to a facilitator who needs to understand what happened, what matters clinically, and what needs follow-up.",
     "Every key conclusion should be supported by transcript evidence or intake metadata.",
+    "Do not limit the number of themes, keywords, questions, or evidence items to a small fixed number if the transcript supports more.",
+    "Include all clinically relevant items that are supported by the transcript; do not truncate lists to an arbitrary count.",
     faithNote,
-    style === "wendy"
-      ? "The wording should feel like a careful intake report, not a dashboard summary."
-      : "Match the requested report style exactly.",
   ].join(" ");
 }
 

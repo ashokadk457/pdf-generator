@@ -51,7 +51,6 @@ export async function extractLaosReport({ transcriptText, metadata = {}, reportS
       }],
     }],
     text: { format: { type: "json_schema", name: LAOS_REPORT_JSON_SCHEMA.name, schema: LAOS_REPORT_JSON_SCHEMA.schema, strict: false } },
-    temperature: 0.2,
     max_output_tokens: Number(process.env.OPENAI_MAX_OUTPUT_TOKENS || 8000),
   });
 
