@@ -31,7 +31,7 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
   }
   function bullets(values, formatter = (x) => text(x), fallback) {
     const source = Array.isArray(values) && values.length ? values : [fallback || "Not available from the supplied information"];
-    for (const value of source) { ensure(70); const rendered = Array.isArray(values) && values.length ? formatter(value) : text(value); doc.font("Helvetica").fontSize(9.2).fillColor("#263D49").text(`• ${rendered}`, left, doc.y, { width }); doc.moveDown(.2); }
+    for (const value of source) { ensure(70); const rendered = Array.isArray(values) && values.length ? formatter(value) : text(value); doc.font("Helvetica").fontSize(9.2).fillColor("#263D49").text(`- ${rendered}`, left, doc.y, { width }); doc.moveDown(.2); }
   }
 
   doc.x = left; doc.y = 70;
@@ -43,7 +43,7 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
   const profile = [
     ["Patient", metadata.patientName || report.patientName], ["Age", metadata.age || report.age], ["Gender", metadata.gender || report.gender],
     ["Language", metadata.language || report.language], ["Intake type", metadata.intakeType || report.intakeType],
-    ["Reference", metadata.referenceNumber || report.reference], ["Contact", [metadata.email, metadata.phone].filter(Boolean).join(" / ")]
+    ["Reference", metadata.referenceNumber || report.caseCode], ["Contact", [metadata.email, metadata.phone].filter(Boolean).join(" / ")]
   ];
   const y0 = doc.y, rh = 23;
   profile.forEach(([label, value], i) => { const y = y0 + i * rh; doc.rect(left, y, 100, rh).strokeColor(BORDER).stroke(); doc.rect(left + 100, y, width - 100, rh).strokeColor(BORDER).stroke(); doc.font("Helvetica-Bold").fontSize(8.8).fillColor(NAVY).text(label, left + 8, y + 7); doc.font("Helvetica").fillColor("#263D49").text(text(value), left + 108, y + 7, { width: width - 116 }); });
@@ -51,7 +51,7 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
 
   heading(1, "Executive Summary"); box(report.executiveSummary);
   heading(2, "Presenting Concerns"); bullets(report.presentingConcerns, x => `${text(x.label)} - Evidence: ${text(x.evidence)}`);
-  heading(3, "Background and History"); bullets(report.backgroundAndHistory, x => `${text(x.label)}: ${text(x.details)} - Evidence: ${text(x.evidence)}`);
+  heading(3, "Background and History"); bullets(report.backgroundHistory, x => `${text(x.label)}: ${text(x.details)} - Evidence: ${text(x.evidence)}`);
   newPage(); heading(4, "Clinical Themes"); bullets(report.clinicalThemes, x => `${text(x.theme)} - ${text(x.meaning)} - Evidence: ${text(x.evidence)}`);
   heading(5, "Clinical Observations"); bullets(report.clinicalObservations, x => `${text(x.observation)} - Implication: ${text(x.clinicalImplication)} - Evidence: ${text(x.evidence)}`);
   heading(6, "Risk Formulation"); box(`Risk level: ${text(report.riskFormulation?.riskLevel, "Unknown")}\n\n${text(report.riskFormulation?.summary)}`);
@@ -62,9 +62,7 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
   heading(10, "Questions Asked and Why"); bullets(report.questionsAskedAndWhy, x => `${text(x.question)} - Why: ${text(x.whyAsked)} - Answer/evidence: ${text(x.answerEvidence)}`, "No questions were recorded in the transcript.");
   heading(11, "Confidence Score"); box(`${Number(report.confidenceScore || 0).toFixed(0)}%`);
   heading(12, "Keywords / Themes / Notes"); bullets([
-    ...(report.keywords || []).map(x => `Keyword: ${x}`),
-    ...(report.themesAndNotes?.themes || []).map(x => `Theme: ${x}`),
-    ...(report.themesAndNotes?.notes || []).map(x => `Note: ${x}`)
+    ...(report.keywords || []).map(x => `Keyword: ${x}`)
   ]);
   heading(13, "Reviewer Considerations"); bullets(report.reviewerConsiderations);
   ensure(180); heading(14, "Facilitator Summary"); box(report.facilitatorSummary);

@@ -1,31 +1,69 @@
-import fs from "node:fs/promises";
 import { createRequire } from "node:module";
 import OpenAI from "openai";
 
 const require = createRequire(import.meta.url);
-const { LAOS_DSP_REPORT_SCHEMA_V2 } = require("./laos_report_schema_v2.cjs");
-const [systemPrompt, userPromptTemplate, whiteboardText, checkpointText] = await Promise.all([
-  fs.readFile(new URL("../laos/laos_system_prompt.txt", import.meta.url), "utf8"),
-  fs.readFile(new URL("../laos/laos_user_prompt_template.txt", import.meta.url), "utf8"),
-  fs.readFile(new URL("../laos/LAOS_Whiteboard_One_Master.md", import.meta.url), "utf8"),
-  fs.readFile(new URL("../laos/LAOS_C1_Checkpoint.md", import.meta.url), "utf8"),
-]);
+const { LAOS_REPORT_JSON_SCHEMA, buildLaosReportInstructions } = require("./laos_report_schema_v2.cjs");
 
-function fillTemplate(template, values) {
-  return template.replace("{{WHITEBOARD_ONE_TEXT}}", values.whiteboardText || "").replace("{{CHECKPOINT_TEXT}}", values.checkpointText || "").replace("{{PATIENT_NAME}}", values.patientName || "Unknown").replace("{{AGE_OR_UNKNOWN}}", values.age || "Unknown").replace("{{GENDER_OR_UNKNOWN}}", values.gender || "Unknown").replace("{{LANGUAGE}}", values.language || "en").replace("{{INTAKE_TYPE}}", values.intakeType || "Unknown").replace("{{REFERENCE_OR_UNKNOWN}}", values.reference || "Unknown").replace("{{TRANSCRIPT_TEXT}}", values.transcriptText || "");
+function firstString(...values) {
+  for (const value of values) {
+    const text = String(value || "").trim();
+    if (text) return text;
+  }
+  return "";
 }
 
-export async function extractLaosReport({ transcriptText, metadata = {} }) {
+function normalizeReportMetadata(report, intake = {}) {
+  const reportDate = firstString(intake.reportDate, report.reportDate, new Date().toISOString());
+  report.reportTitle = firstString(report.reportTitle, "LAOS Wendy Style Report");
+  report.caseCode = firstString(intake.referenceNumber, intake.reference, report.caseCode);
+  report.patientName = firstString(intake.patientName, intake.fullName, report.patientName);
+  report.sessionDate = firstString(intake.sessionDate, report.sessionDate, reportDate);
+  report.reportDate = reportDate;
+  report.language = firstString(intake.language, report.language, "en");
+  report.sourceTranscriptLanguage = firstString(intake.sourceTranscriptLanguage, report.sourceTranscriptLanguage, report.language);
+  const confidence = Number(report.confidenceScore);
+  report.confidenceScore = Number.isFinite(confidence) ? Math.max(0, Math.min(100, confidence <= 1 ? Math.round(confidence * 100) : Math.round(confidence))) : 0;
+  return report;
+}
+
+export async function extractLaosReport({ transcriptText, metadata = {}, reportStyle = "wendy", includeFaithSection = false }) {
   const transcript = String(transcriptText || "").trim();
   if (!transcript) throw new Error("Transcript text is required");
   if (!process.env.OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not configured");
+
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  const userPrompt = fillTemplate(userPromptTemplate, { whiteboardText, checkpointText, transcriptText: transcript, patientName: metadata.patientName || "Unknown", age: metadata.age || "Unknown", gender: metadata.gender || "Unknown", language: metadata.language || "en", intakeType: metadata.intakeType || "Unknown", reference: metadata.referenceNumber || "Unknown" });
   const response = await client.responses.create({
-    model: process.env.OPENAI_MODEL || "gpt-5-mini", max_output_tokens: 10000,
-    input: [{ role: "system", content: [{ type: "input_text", text: systemPrompt }] }, { role: "user", content: [{ type: "input_text", text: userPrompt }] }],
-    text: { format: { type: "json_schema", name: LAOS_DSP_REPORT_SCHEMA_V2.name, strict: false, schema: LAOS_DSP_REPORT_SCHEMA_V2.schema } },
+    model: process.env.LAOS_REPORT_MODEL || process.env.OPENAI_REPORT_MODEL || process.env.OPENAI_MODEL || "gpt-5.4-mini",
+    instructions: buildLaosReportInstructions({ style: reportStyle, includeFaithSection }),
+    input: [{
+      role: "user",
+      content: [{
+        type: "input_text",
+        text: [
+          "Generate the LAOS report JSON from the transcript and intake data below.",
+          "Return only JSON that matches the schema.",
+          "",
+          `Intake data: ${JSON.stringify(metadata)}`,
+          "",
+          "Transcript:",
+          transcript,
+        ].join("\n"),
+      }],
+    }],
+    text: { format: { type: "json_schema", name: LAOS_REPORT_JSON_SCHEMA.name, schema: LAOS_REPORT_JSON_SCHEMA.schema, strict: false } },
+    temperature: 0.2,
+    max_output_tokens: Number(process.env.OPENAI_MAX_OUTPUT_TOKENS || 8000),
   });
-  if (!response.output_text) throw new Error("The LAOS API returned no report content");
-  return JSON.parse(response.output_text);
+
+  if (response.status === "incomplete") {
+    const reason = response.incomplete_details?.reason || "unknown reason";
+    throw new Error(`OpenAI returned an incomplete report (${reason}). Increase OPENAI_MAX_OUTPUT_TOKENS if needed.`);
+  }
+  const jsonText = String(response.output_text || "").trim();
+  if (!jsonText) throw new Error("OpenAI returned no LAOS report content");
+  try {
+    return normalizeReportMetadata(JSON.parse(jsonText), metadata);
+  } catch {
+    throw new Error("OpenAI returned invalid or truncated report JSON. Retry the request; if it repeats, increase OPENAI_MAX_OUTPUT_TOKENS.");
+  }
 }

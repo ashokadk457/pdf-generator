@@ -1,6 +1,6 @@
 # WannaTalk LAOS Report Generator
 
-This Node.js service accepts patient metadata and a `.txt` transcript, sends the client-supplied frozen LAOS prompt pack and exact `laos_dsp_style_report_v2` schema through the official OpenAI Node SDK, and renders the structured result as a branded clinical PDF.
+This Node.js service accepts patient metadata and a `.txt` transcript, sends the latest client-supplied Wendy-style LAOS instructions and exact `laos_wendy_style_report` schema through the official OpenAI Node SDK, and renders the structured result as a branded clinical PDF.
 
 ## Run
 
@@ -16,14 +16,13 @@ Interactive Swagger documentation: `http://localhost:3000/api-docs`
 
 Raw OpenAPI JSON: `http://localhost:3000/api-docs.json`
 
-## Client pack integration
+## Client integration
 
-- `src/laos_report_schema_v2.cjs` is an exact content copy of the client's v2 schema (the `.cjs` extension lets the CommonJS export load in this ESM project).
-- `laos/laos_system_prompt.txt` and `laos/laos_user_prompt_template.txt` are sent unchanged.
-- `laos/LAOS_Whiteboard_One_Master.md` and `laos/LAOS_C1_Checkpoint.md` fill the prompt placeholders unchanged.
-- `laos/LAOS_Transcript_Reading_Workflow.md` and `laos/acceptance_tests.md` are retained as client reference documents.
-- `src/extract-report.js` uses the official `openai` SDK and Responses API while retaining the client's temperature, token limit, message layout, and strict schema request.
-- `src/pdf.js` maps the exact v2 JSON fields into the existing PDF template.
+- `src/laos_report_schema_v2.cjs` is an exact content copy of the latest client schema and includes the client's `buildLaosReportInstructions` function.
+- `src/extract-report.js` applies the latest service flow: Wendy-style instructions, intake metadata, transcript, model selection, metadata normalization, and the official OpenAI Responses API.
+- The supplied `clinical.js` belongs to a different CommonJS clinical-library/job router. Its applicable report-generation behavior was integrated without importing its unrelated job storage and router endpoints.
+- `src/pdf.js` maps the latest fields, including `caseCode` and `backgroundHistory`, into the existing PDF template.
+- The schema is sent with `strict: false` because the exact client file defines optional properties; changing this to strict mode without revising its `required` arrays causes OpenAI schema validation errors.
 
 The uploaded patient's name, age, gender, language, intake type, and reference number are supplied as request metadata. Email and phone remain PDF contact fields; they are not added to the clinical model schema because the client schema does not define them.
 

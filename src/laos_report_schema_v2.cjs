@@ -1,15 +1,17 @@
-const LAOS_DSP_REPORT_SCHEMA_V2 = {
-  name: "laos_dsp_style_report_v2",
+const LAOS_REPORT_JSON_SCHEMA = {
+  name: "laos_wendy_style_report",
   schema: {
     type: "object",
     additionalProperties: false,
     required: [
       "reportTitle",
+      "caseCode",
       "patientName",
+      "sessionDate",
       "language",
       "executiveSummary",
       "presentingConcerns",
-      "backgroundAndHistory",
+      "backgroundHistory",
       "clinicalThemes",
       "clinicalObservations",
       "riskFormulation",
@@ -21,24 +23,20 @@ const LAOS_DSP_REPORT_SCHEMA_V2 = {
       "confidenceScore",
       "reviewerConsiderations",
       "facilitatorSummary",
-      "clinicalWorkingNotes",
+      "clinicalWorkingNotes"
     ],
     properties: {
       reportTitle: { type: "string" },
       reportSubtitle: { type: "string" },
+      caseCode: { type: "string" },
       patientName: { type: "string" },
-      age: { type: "string" },
-      gender: { type: "string" },
       sessionDate: { type: "string" },
       reportDate: { type: "string" },
       language: { type: "string" },
       sourceTranscriptLanguage: { type: "string" },
-      intakeType: { type: "string" },
-      reference: { type: "string" },
       executiveSummary: { type: "string" },
       presentingConcerns: {
         type: "array",
-        minItems: 1,
         items: {
           type: "object",
           additionalProperties: false,
@@ -49,7 +47,7 @@ const LAOS_DSP_REPORT_SCHEMA_V2 = {
           },
         },
       },
-      backgroundAndHistory: {
+      backgroundHistory: {
         type: "array",
         items: {
           type: "object",
@@ -151,10 +149,6 @@ const LAOS_DSP_REPORT_SCHEMA_V2 = {
         },
       },
       keywords: { type: "array", items: { type: "string" } },
-      themesAndNotes: {
-        type: "array",
-        items: { type: "string" },
-      },
       confidenceScore: { type: "number" },
       reviewerConsiderations: { type: "array", items: { type: "string" } },
       facilitatorSummary: { type: "string" },
@@ -174,7 +168,29 @@ const LAOS_DSP_REPORT_SCHEMA_V2 = {
   },
 };
 
-module.exports = {
-  LAOS_DSP_REPORT_SCHEMA_V2,
-};
+function buildLaosReportInstructions({ style = "wendy", includeFaithSection = false } = {}) {
+  const faithNote = includeFaithSection
+    ? [
+        "If the transcript clearly includes faith, prayer, scripture, God, Jesus, Trinity, church, or Christian counsel, include a faithAndMeaning section.",
+        "If faith is not clearly present, set faithAndMeaning.present to false and keep the summary concise.",
+      ].join(" ")
+    : "Do not invent a faith section unless the transcript clearly supports it.";
 
+  return [
+    "You are writing a clinically grounded LAOS intake report in the Wendy-style format.",
+    "Use only what is supported by the transcript and intake data. Do not add generic filler.",
+    "Prefer concise, specific, evidence-linked language over broad summaries.",
+    "Preserve the order and tone of a structured clinical report.",
+    "Make the report useful to a facilitator who needs to understand what happened, what matters clinically, and what needs follow-up.",
+    "Every key conclusion should be supported by transcript evidence or intake metadata.",
+    faithNote,
+    style === "wendy"
+      ? "The wording should feel like a careful intake report, not a dashboard summary."
+      : "Match the requested report style exactly.",
+  ].join(" ");
+}
+
+module.exports = {
+  LAOS_REPORT_JSON_SCHEMA,
+  buildLaosReportInstructions,
+};
