@@ -10,7 +10,7 @@ Copy-Item .env.example .env
 npm start
 ```
 
-Set `OPENAI_API_KEY` and optionally `OPENAI_MODEL` in `.env`, then open `http://localhost:3000`. `LOGO_PATH` may point to a separate PNG or JPEG logo.
+Set `OPENAI_API_KEY` and optionally `OPENAI_MODEL` in `.env`, then open `http://localhost:3000`. `OPENAI_MAX_OUTPUT_TOKENS` defaults to `8000` so full structured reports are not cut off. `LOGO_PATH` may point to a separate PNG or JPEG logo.
 
 Interactive Swagger documentation: `http://localhost:3000/api-docs`
 
@@ -32,7 +32,8 @@ The uploaded patient's name, age, gender, language, intake type, and reference n
 1. The browser submits metadata plus one plain-text transcript.
 2. The server fills the client user-prompt template with the frozen references, metadata, and transcript.
 3. OpenAI's Responses API returns JSON constrained by the exact client schema.
-4. The server parses that JSON and produces the downloadable PDF.
+4. The server saves the complete parsed response to `output/json/WannaTalk-<reference>-<id>.json`.
+5. The server uses that saved response data to produce the downloadable PDF.
 
 Run `npm run sample` to generate `output/pdf/WannaTalk-schema-sample.pdf` without calling an API.
 

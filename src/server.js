@@ -13,7 +13,8 @@ const app = express();
 const root = path.resolve(import.meta.dirname, "..");
 const uploadDir = path.join(root, "uploads");
 const outputDir = path.join(root, "output", "pdf");
-fs.mkdirSync(uploadDir, { recursive: true }); fs.mkdirSync(outputDir, { recursive: true });
+const jsonOutputDir = path.join(root, "output", "json");
+fs.mkdirSync(uploadDir, { recursive: true }); fs.mkdirSync(outputDir, { recursive: true }); fs.mkdirSync(jsonOutputDir, { recursive: true });
 const upload = multer({ dest: uploadDir, limits: { fileSize: 2 * 1024 * 1024 }, fileFilter: (_r, f, cb) => cb(null, f.mimetype === "text/plain" || f.originalname.toLowerCase().endsWith(".txt")) });
 app.use(express.static(path.join(root, "public")));
 app.get("/api-docs.json", (_req, res) => res.json(openApiSpec));
@@ -34,7 +35,11 @@ app.post("/api/reports", upload.single("transcript"), async (req, res) => {
     const includeFaithSection = String(process.env.INCLUDE_FAITH_SECTION).toLowerCase() === "true";
     const report = await extractLaosReport({ transcriptText, metadata, includeFaithSection });
     const safeRef = metadata.referenceNumber.replace(/[^a-z0-9_-]+/gi, "-");
-    const outputPath = path.join(outputDir, `WannaTalk-${safeRef}-${crypto.randomUUID().slice(0, 8)}.pdf`);
+    const reportId = crypto.randomUUID().slice(0, 8);
+    const jsonOutputPath = path.join(jsonOutputDir, `WannaTalk-${safeRef}-${reportId}.json`);
+    fs.writeFileSync(jsonOutputPath, JSON.stringify(report, null, 2), "utf8");
+    console.log(`OpenAI report JSON saved: ${jsonOutputPath}`);
+    const outputPath = path.join(outputDir, `WannaTalk-${safeRef}-${reportId}.pdf`);
     await createReportPdf({ metadata, report, logoPath: process.env.LOGO_PATH || "", outputPath, includeFaithSection });
     res.download(outputPath, `WannaTalk-${safeRef}.pdf`);
   } catch (error) { console.error(error); res.status(500).json({ error: "The report could not be generated.", details: error.message }); }
