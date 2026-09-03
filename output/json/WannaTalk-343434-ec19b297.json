@@ -1,0 +1,285 @@
+{
+  "reportTitle": "LAOS Intake Report",
+  "reportSubtitle": "Text intake summary for divorce-related distress, parenting reintegration, and relapse prevention",
+  "caseCode": "343434",
+  "patientName": "asa",
+  "sessionDate": "2026-08-27T09:46:27.912Z",
+  "reportDate": "2026-08-27",
+  "language": "en",
+  "sourceTranscriptLanguage": "en",
+  "executiveSummary": "The client describes severe distress related to an ongoing high-conflict divorce, prolonged separation from children, and concern about how to support reintegration safely. He reports past pornography use, shame about prior sexual boundary violations in the marriage, ongoing grief/loneliness, and difficulty trusting others after the relationship breakdown. He also reports that he is no longer in the acute suicidal state he experienced at the start of the crisis, and states he has made significant progress with support from God and a helper named Mr Louw Alberts. The intake suggests current needs around relapse prevention, emotional regulation, accountability, co-parenting communication, and child-focused reintegration.",
+  "presentingConcerns": [
+    {
+      "label": "Divorce-related trauma and grief",
+      "evidence": "“I am in middle of an extremely messy divorce” and “when all this started I was so broken and traumatized”."
+    },
+    {
+      "label": "Past passive suicidal thoughts during initial crisis",
+      "evidence": "“in the beginning I didn't want to live anymore. I am not the suicidal type, but I would have welcomed the end with a smile.”"
+    },
+    {
+      "label": "Pornography relapse prevention",
+      "evidence": "“One of my weaknesses used to be pornography… I still need help… The pornography, just to make sure I do not have a relapse.”"
+    },
+    {
+      "label": "Sexual boundary concerns and shame",
+      "evidence": "“Healthy Sexual boundaries… me and my ex experimented quite a bit, including a third partner” and “I sometimes even get to the point where I hate myself for what I allowed.”"
+    },
+    {
+      "label": "Emotional regulation under stress and loneliness",
+      "evidence": "“Emotional regulation, how to handle stress, sorrow, anger, rejection, loneliness” and “the sorrow and loneliness sometimes still get to me.”"
+    },
+    {
+      "label": "Parent-child separation and reintegration",
+      "evidence": "“I am still fighting to see my children after 1 and a half years” and “Reintegration therapy for when I see my kids again.”"
+    },
+    {
+      "label": "Trust and self-esteem difficulties",
+      "evidence": "“I am working on my self-esteem” and “I am having issues even imagining trusting people again.”"
+    }
+  ],
+  "backgroundHistory": [
+    {
+      "label": "Forensic and legal context",
+      "details": "Client reports multiple investigations found him innocent of allegations made by his ex-partner.",
+      "evidence": "“two psychological forensic investigations, a police forensic investigation and a social worker's forensic investigation with the children have all without fail confirmed that I am innocent.”"
+    },
+    {
+      "label": "Duration of child separation",
+      "details": "Reports being unable to see his children for approximately 1.5 years.",
+      "evidence": "“I am still fighting to see my children after 1 and a half years.”"
+    },
+    {
+      "label": "Current child preparation",
+      "details": "States the children are in therapy to prepare for reintegration.",
+      "evidence": "“They are in therapy to prepare them for our reintegration.”"
+    },
+    {
+      "label": "Prior pornography vulnerability",
+      "details": "Identifies pornography as a past weakness and wants relapse prevention support.",
+      "evidence": "“One of my weaknesses used to be pornography” and “just to make sure I do not have a relapse.”"
+    },
+    {
+      "label": "Religious support",
+      "details": "Reports improvement with help from God and Mr Louw Alberts.",
+      "evidence": "“with the help of Mr Louw Alberts and God, I was able to grow stronger.”"
+    },
+    {
+      "label": "Family discussion/support",
+      "details": "States he discusses accountability and relationship issues with his mother regularly.",
+      "evidence": "“I discuss this with my mother on a regular basis.”"
+    }
+  ],
+  "clinicalThemes": [
+    {
+      "theme": "Acute relational trauma with prolonged aftermath",
+      "meaning": "The divorce appears to be the central stressor, with ongoing grief, anger, shame, and identity disruption persisting after the initial crisis.",
+      "evidence": "“extremely messy divorce,” “broken and traumatized,” “still miss my family sometimes.”"
+    },
+    {
+      "theme": "Shame and self-blame",
+      "meaning": "The client repeatedly attributes fault to himself and reports self-hatred related to past sexual decisions, suggesting significant shame-based distress.",
+      "evidence": "“I know the things I allowed in our marriage was my fault” and “I sometimes even get to the point where I hate myself for what I allowed.”"
+    },
+    {
+      "theme": "Motivation for change and accountability",
+      "meaning": "Despite distress, he shows willingness to reflect, accept guidance, and work on specific behavioral and relational skills.",
+      "evidence": "“I am more than willing to work on these and fix whatever needs fixing.”"
+    },
+    {
+      "theme": "Child-focused concern",
+      "meaning": "His primary concern is how to reconnect with his children without increasing their distress or undermining their mother.",
+      "evidence": "“I don't want to cause more pain and trauma than they already have.”"
+    },
+    {
+      "theme": "Relapse risk under emotional strain",
+      "meaning": "Pornography is framed as a past coping vulnerability, with concern that stress, loneliness, and shame could increase relapse risk.",
+      "evidence": "“just to make sure I do not have a relapse” and “the sorrow and loneliness sometimes still get to me.”"
+    },
+    {
+      "theme": "Faith as a coping resource",
+      "meaning": "He explicitly links improvement in strength against pornography to God.",
+      "evidence": "“with the help of Mr Louw Alberts and God.”"
+    }
+  ],
+  "clinicalObservations": [
+    {
+      "observation": "No current active suicidal intent is reported in the transcript.",
+      "clinicalImplication": "Historical passive death wish during the initial crisis should be noted, but current risk appears lower based on self-report.",
+      "evidence": "“in the beginning I didn't want to live anymore. I am not the suicidal type.”"
+    },
+    {
+      "observation": "The client presents as reflective and verbally detailed about his role in past relationship dynamics.",
+      "clinicalImplication": "This may support engagement in insight-oriented work, accountability, and behavior change planning.",
+      "evidence": "“I know the things I allowed in our marriage was my fault.”"
+    },
+    {
+      "observation": "He reports ongoing emotional triggers, especially loneliness and sorrow.",
+      "clinicalImplication": "These states may be relevant triggers for relapse, withdrawal, or mood deterioration.",
+      "evidence": "“the sorrow and loneliness sometimes still get to me.”"
+    },
+    {
+      "observation": "He expresses concern about trust and social fatigue.",
+      "clinicalImplication": "Interpersonal mistrust may affect support-seeking, co-parenting, and reintegration work.",
+      "evidence": "“I am having issues even imagining trusting people again” and “socialize… is draining.”"
+    },
+    {
+      "observation": "He is future-oriented about reunification with his children.",
+      "clinicalImplication": "This suggests a meaningful protective goal that can be used to structure treatment and parenting work.",
+      "evidence": "“This is the one thing I am the most excited about.”"
+    }
+  ],
+  "riskFormulation": {
+    "riskLevel": "Moderate",
+    "summary": "Current self-report does not indicate active suicidal intent, but there is a history of passive death wish during the initial divorce crisis, ongoing shame, loneliness, and concern about relapse into pornography under stress. Risk is moderated by stated improvement, help-seeking, family support, and faith-based coping.",
+    "warningSigns": [
+      "Return of passive death wish or hopelessness",
+      "Escalating loneliness, sorrow, or self-hatred",
+      "Pornography relapse or increased sexual preoccupation",
+      "Withdrawal from support or reduced accountability",
+      "Heightened distress around contact/reintegration with children"
+    ],
+    "protectiveBuffer": [
+      "States he is no longer in the initial suicidal state",
+      "Reports extensive healing since the crisis",
+      "Has support from Mr Louw Alberts and God",
+      "Discusses accountability with his mother regularly",
+      "Strong motivation to reconnect safely with his children"
+    ],
+    "followUpFocus": [
+      "Clarify current suicide risk and any recent self-harm thoughts",
+      "Assess pornography relapse history, triggers, and coping plan",
+      "Support shame reduction and balanced accountability",
+      "Develop child-focused reintegration communication plan",
+      "Strengthen coping strategies for loneliness, rejection, and conflict"
+    ]
+  },
+  "protectiveFactors": [
+    {
+      "factor": "Help-seeking and willingness to work",
+      "whyItMatters": "He explicitly requests help with multiple domains and appears motivated for change."
+    },
+    {
+      "factor": "Support from mother",
+      "whyItMatters": "Regular discussion with his mother may provide emotional containment and accountability."
+    },
+    {
+      "factor": "Faith-based coping",
+      "whyItMatters": "He identifies God as part of what helped him grow stronger against pornography."
+    },
+    {
+      "factor": "Future-oriented parenting goal",
+      "whyItMatters": "His desire to reconnect with his children may support persistence and treatment engagement."
+    },
+    {
+      "factor": "Reported progress since crisis",
+      "whyItMatters": "He states he has gone through extensive healing and is no longer in the initial suicidal state."
+    }
+  ],
+  "reasoningModel": [
+    {
+      "step": "Identify primary stressor",
+      "whyItMatters": "The divorce and separation from children appear to organize most of the distress.",
+      "evidence": "“extremely messy divorce” and “fighting to see my children after 1 and a half years.”"
+    },
+    {
+      "step": "Assess mood and safety content",
+      "whyItMatters": "The statement about not wanting to live required attention to historical suicide risk.",
+      "evidence": "“in the beginning I didn't want to live anymore… I am not the suicidal type.”"
+    },
+    {
+      "step": "Map current vulnerabilities",
+      "whyItMatters": "Loneliness, shame, and trust issues may worsen mood or trigger relapse.",
+      "evidence": "“the sorrow and loneliness sometimes still get to me” and “issues even imagining trusting people again.”"
+    },
+    {
+      "step": "Identify treatment targets",
+      "whyItMatters": "The client names concrete areas for intervention, which can guide intake planning.",
+      "evidence": "Pornography, sexual boundaries, emotional regulation, insight/accountability, parenting, communication, self-esteem, reintegration therapy."
+    },
+    {
+      "step": "Note protective resources",
+      "whyItMatters": "Support and faith may reduce risk and improve engagement.",
+      "evidence": "“with the help of Mr Louw Alberts and God” and discussion with his mother."
+    }
+  ],
+  "evidenceModel": [
+    {
+      "claim": "The client is distressed by divorce-related trauma.",
+      "supportingEvidence": "He describes being “broken and traumatized” by the divorce and ongoing separation from family."
+    },
+    {
+      "claim": "There is no current report of active suicidality.",
+      "supportingEvidence": "He says he is “not the suicidal type” and frames the death wish as occurring “in the beginning.”"
+    },
+    {
+      "claim": "Pornography is a past vulnerability requiring relapse prevention.",
+      "supportingEvidence": "He identifies pornography as a weakness and asks for help “to make sure I do not have a relapse.”"
+    },
+    {
+      "claim": "He has insight into his role in past relationship dynamics.",
+      "supportingEvidence": "He states “I know the things I allowed in our marriage was my fault” and discusses accountability with his mother."
+    },
+    {
+      "claim": "Faith is part of his coping and recovery narrative.",
+      "supportingEvidence": "He credits growth against pornography to “Mr Louw Alberts and God.”"
+    }
+  ],
+  "questionsAskedAndWhy": [
+    {
+      "question": "Are you currently having thoughts of wanting to die or harm yourself?",
+      "whyAsked": "The transcript includes a past passive death wish and required clarification of current risk.",
+      "answerEvidence": "He states the suicidal feelings were at the beginning of the crisis and says, “I am not the suicidal type.”"
+    },
+    {
+      "question": "What are the main areas you want help with now?",
+      "whyAsked": "He listed specific treatment needs that should guide intake formulation.",
+      "answerEvidence": "He names pornography relapse prevention, sexual boundaries, emotional regulation, accountability, parenting, communication, self-esteem, and reintegration therapy."
+    },
+    {
+      "question": "What supports have helped you so far?",
+      "whyAsked": "To identify protective factors and existing coping resources.",
+      "answerEvidence": "He reports help from “Mr Louw Alberts and God” and regular discussion with his mother."
+    },
+    {
+      "question": "What is the current status of contact with your children?",
+      "whyAsked": "Child separation and reintegration are central clinical concerns.",
+      "answerEvidence": "He reports fighting to see them after 1.5 years and that they are in therapy to prepare for reintegration."
+    }
+  ],
+  "keywords": [
+    "divorce",
+    "trauma",
+    "passive suicidal ideation",
+    "pornography",
+    "sexual boundaries",
+    "shame",
+    "accountability",
+    "parental capacity",
+    "reintegration",
+    "co-parenting",
+    "loneliness",
+    "trust",
+    "faith"
+  ],
+  "confidenceScore": 90,
+  "reviewerConsiderations": [
+    "The intake data lists the patient name as 'asa,' while the transcript names 'Eugene Mulder'; identity should be verified.",
+    "The transcript contains a historical passive death wish; current risk should be directly assessed in follow-up.",
+    "The client’s account includes allegations and forensic findings; the report should remain descriptive and avoid adjudicating legal matters beyond what he reported.",
+    "Faith is clearly present and should be considered in care planning if the client wishes."
+  ],
+  "facilitatorSummary": "Client presents with divorce-related distress, shame, and concern about parenting reintegration. He requests support for pornography relapse prevention, sexual boundaries, emotional regulation, accountability, communication, self-esteem, and child-focused contact. He reports past passive death wish during the initial crisis but no current suicidal intent in the text. He identifies God, his mother, and Mr Louw Alberts as supports. Follow-up should clarify safety, assess relapse risk, and structure reintegration and co-parenting work.",
+  "clinicalWorkingNotes": "The narrative is highly self-reflective and shame-laden, with repeated self-blame and concern about moral failure. He appears motivated for change and oriented toward repair, especially with his children. The main clinical tasks are to verify current safety, understand the severity and pattern of pornography use, assess mood symptoms related to prolonged separation and legal stress, and support practical communication and parenting planning. The report should not infer abuse or guilt beyond the client’s statement that forensic investigations found him innocent.",
+  "faithAndMeaning": {
+    "present": true,
+    "summary": "Faith is explicitly described as part of recovery and strengthening against pornography.",
+    "evidence": [
+      "“with the help of Mr Louw Alberts and God, I was able to grow stronger”"
+    ],
+    "followUp": [
+      "Ask whether he wants faith integrated into care or referrals.",
+      "Explore whether prayer, scripture, church, or pastoral support are ongoing resources."
+    ]
+  }
+}

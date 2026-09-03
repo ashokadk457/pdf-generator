@@ -1,0 +1,364 @@
+{
+  "reportTitle": "LAOS Intake Report",
+  "reportSubtitle": "Text intake summary based on patient-reported concerns",
+  "caseCode": "35445454",
+  "patientName": "Harry",
+  "sessionDate": "2026-09-02T05:54:03.315Z",
+  "reportDate": "2026-09-02",
+  "language": "en",
+  "sourceTranscriptLanguage": "en",
+  "executiveSummary": "The intake describes a person in a prolonged and highly conflictual divorce who reports false allegations, separation from children for about 1.5 years, past pornography concerns, regret about prior sexual behavior, ongoing sorrow/loneliness, trust difficulties, and a need for support with reintegration and child-focused co-parenting. The message also includes a past period of not wanting to live, though the person states they are not the suicidal type and describes this as occurring at the beginning of the crisis.",
+  "sessionSummary": "The person wrote that they are in the middle of an extremely messy divorce and believe their ex-partner falsely accused them of abuse, molestation, and other serious allegations. They report that two psychological forensic investigations, a police forensic investigation, and a social worker forensic investigation with the children all confirmed their innocence. They described being deeply broken and traumatized when the accusations began and said that at that time they did not want to live, though they also said they are not the suicidal type and would have welcomed death rather than actively intending suicide. They report extensive healing since then, but still miss their family and continue fighting to see their children after about 1.5 years. They said the children are in therapy to prepare for reintegration.\n\nThey identified several areas where they want help: preventing relapse into pornography use; developing healthy sexual boundaries; managing emotional reactions such as stress, sorrow, anger, rejection, and loneliness; increasing insight and accountability regarding their role in the marriage and its impact on their ex-partner and children; strengthening parental capacity and child-focused contact; improving communication and conflict management for future co-parenting; addressing self-esteem, social withdrawal, and trust issues; and preparing for reintegration therapy with the children. They described regret about past sexual experimentation in the marriage, including a third partner, and said this regret can become intense and sometimes depressing, at times leading to self-hatred. They also said they discuss these issues regularly with their mother. They stated that they do not hate their ex-partner, are not always angry at her, and feel sorry for her, while also saying they never did the things she claimed. They expressed excitement and fear about seeing their children again and asked how to speak to them without making their mother seem like the bad guy.",
+  "presentingConcerns": [
+    {
+      "label": "Divorce-related distress and trauma",
+      "evidence": "\"I am in middle of an extremely messy divorce\"; \"when all this started I was so broken and traumetized\""
+    },
+    {
+      "label": "False allegations and legal/forensic conflict",
+      "evidence": "\"my ex falsely accused me of some of the worst possible accusations such as abuse, molestation and so on\"; \"two psychological forensic investigations, a police forensic investigation and a social worker;s forensic investigation with the children have all without fail confirmed that I am innocent\""
+    },
+    {
+      "label": "Past passive death wish / suicidal thoughts at onset of crisis",
+      "evidence": "\"in the beginning I didn't want to live anymore\"; \"I am not the suicidal type, but I would have welcomed the end with a smile\""
+    },
+    {
+      "label": "Separation from children and reintegration concerns",
+      "evidence": "\"I am still fighting to see my children after 1 and a half years\"; \"Reintegration therapy for when I see my kids again\""
+    },
+    {
+      "label": "Pornography relapse prevention",
+      "evidence": "\"One of my weaknesses used to be pornography\"; \"I still need help on the following: 1. The pornography, just to make sure I do not have a relapse\""
+    },
+    {
+      "label": "Sexual boundary concerns and regret",
+      "evidence": "\"Healthy Sexual boundaries\"; \"me and my ex experimented quite a bit, including a third partner in the past\"; \"I sometimes even get to the point where I hate myself for what I allowed\""
+    },
+    {
+      "label": "Emotional regulation difficulties",
+      "evidence": "\"how to handle stress, sorrow, anger, rejection, loneliness\"; \"the sorrow and loneliness sometimes still get to me\""
+    },
+    {
+      "label": "Trust and self-esteem concerns",
+      "evidence": "\"working on my self-esteem\"; \"The problem that I am starting to notice though is trust\"; \"I am having issues even imagining trusting people again\""
+    },
+    {
+      "label": "Child-focused communication and co-parenting needs",
+      "evidence": "\"developing healthier ways to communicate, handle conflict, avoid escalation, and communicate with Bernadine and other involved parties in a child-focused manner\""
+    },
+    {
+      "label": "Need for guidance on speaking to children about separation",
+      "evidence": "\"How and what do I say to them\"; \"How do I handle this without making their mother seem like the bad guy\""
+    }
+  ],
+  "backgroundHistory": [
+    {
+      "label": "Duration of separation from children",
+      "details": "Reports not seeing the children for about 1.5 years.",
+      "evidence": "\"I am still fighting to see my children after 1 and a half years\""
+    },
+    {
+      "label": "Forensic and psychological investigations",
+      "details": "Reports multiple investigations that he says confirmed his innocence.",
+      "evidence": "\"two psychological forensic investigations, a police forensic investigation and a social worker;s forensic investigation with the children have all without fail confirmed that I am innocent\""
+    },
+    {
+      "label": "Children in therapy",
+      "details": "Reports the children are in therapy to prepare for reintegration.",
+      "evidence": "\"They are in therepy to prepare them for our reintegration\""
+    },
+    {
+      "label": "Past pornography concern",
+      "details": "Describes pornography as a prior weakness and says he has improved with support.",
+      "evidence": "\"One of my weaknesses used to be pornography, although, with the help of Mr Louw Alberts and God, I was able to grow stronger\""
+    },
+    {
+      "label": "Past sexual experimentation in marriage",
+      "details": "Reports sexual experimentation with ex-partner, including a third partner, and strong regret about it.",
+      "evidence": "\"me and my ex experimented quite a bit, including a third partner in the past\"; \"my regret about this matter\""
+    },
+    {
+      "label": "Family discussion/support",
+      "details": "Says he discusses accountability and related issues with his mother regularly.",
+      "evidence": "\"I discuss this with my mother on a regular basis\""
+    },
+    {
+      "label": "Relationship rupture and blame",
+      "details": "States he believes his ex-partner started the conflict and that the family was broken by the divorce process.",
+      "evidence": "\"Bernadine started all of this and broke us as a family\""
+    },
+    {
+      "label": "Trust injury",
+      "details": "Reports difficulty trusting people after the relationship rupture.",
+      "evidence": "\"After Bernadine broke my trust, I am having issues even imagining trusting people again\""
+    }
+  ],
+  "clinicalThemes": [
+    {
+      "theme": "Acute relational trauma and prolonged stress",
+      "meaning": "The divorce and allegations appear to be the central stressor, with ongoing emotional impact over an extended period.",
+      "evidence": "\"extremely messy divorce\"; \"so broken and traumetized\"; \"still fighting to see my children after 1 and a half years\""
+    },
+    {
+      "theme": "Passive suicidal ideation / death wish during initial crisis",
+      "meaning": "He describes a period of not wanting to live, but frames it as passive and time-limited rather than current active suicidality.",
+      "evidence": "\"in the beginning I didn't want to live anymore\"; \"I am not the suicidal type\""
+    },
+    {
+      "theme": "Shame and self-condemnation",
+      "meaning": "He expresses intense regret and self-hatred related to past sexual behavior and marital decisions.",
+      "evidence": "\"I sometimes even get to the point where I hate myself for what I allowed\""
+    },
+    {
+      "theme": "Motivation for change and repair",
+      "meaning": "He presents as wanting help, accountability, and safer parenting/co-parenting rather than avoiding responsibility.",
+      "evidence": "\"According to my lawyer, I still needs help on the following\"; \"I am more than willing to work on these and fix what ever needs fixing\""
+    },
+    {
+      "theme": "Parent-child separation and reintegration anxiety",
+      "meaning": "He is both eager and afraid about reconnecting with the children and needs guidance on age-appropriate repair.",
+      "evidence": "\"This is the one thing I am the most excited about, but also scared of\""
+    },
+    {
+      "theme": "Trust disruption",
+      "meaning": "He reports difficulty trusting others after the relationship breakdown.",
+      "evidence": "\"I am having issues even imagining trusting people again\""
+    },
+    {
+      "theme": "Child-focused stance with ambivalence toward ex-partner",
+      "meaning": "He says he does not hate his ex-partner and wants to avoid harming the children with adult conflict.",
+      "evidence": "\"I do not hate her\"; \"I don't want to cause more pain and trauma than they already have\""
+    },
+    {
+      "theme": "Spiritual coping",
+      "meaning": "He attributes some improvement in pornography-related self-control to God and support from another person.",
+      "evidence": "\"with the help of Mr Louw Alberts and God, I was able to grow stronger\""
+    }
+  ],
+  "clinicalObservations": [
+    {
+      "observation": "The narrative is organized, detailed, and goal-directed.",
+      "clinicalImplication": "Suggests the person can identify concerns, reflect on behavior, and articulate treatment goals.",
+      "evidence": "The message lists eight numbered areas of requested help and explains each one."
+    },
+    {
+      "observation": "The person shows mixed emotional states: grief, regret, fear, hope, and anger are all present.",
+      "clinicalImplication": "Treatment may need to address emotional regulation and integration of conflicting feelings rather than a single symptom focus.",
+      "evidence": "\"miss my family\"; \"sorrow and loneliness\"; \"excited about, but also scared of\"; \"I do not hate her\""
+    },
+    {
+      "observation": "There is explicit self-blame and moral injury language.",
+      "clinicalImplication": "This may be relevant to shame-based distress and self-esteem work.",
+      "evidence": "\"I know the things I allowed in our marriage was my fault\"; \"I sometimes even get to the point where I hate myself\""
+    },
+    {
+      "observation": "He reports no current active suicidal intent in the text, but does describe a past passive wish not to live.",
+      "clinicalImplication": "Risk review should clarify current ideation, intent, and protective factors.",
+      "evidence": "\"I didn't want to live anymore\"; \"I am not the suicidal type\""
+    },
+    {
+      "observation": "He frames the children’s needs and emotional safety as important.",
+      "clinicalImplication": "This supports a child-focused treatment frame and reintegration planning.",
+      "evidence": "\"I don't want to cause more pain and trauma than they already have\""
+    },
+    {
+      "observation": "He reports trust problems and social fatigue but not fear of people.",
+      "clinicalImplication": "This may indicate relational caution rather than broad social avoidance.",
+      "evidence": "\"I do not mind to socialize, although it is draining\"; \"I am having issues even imagining trusting people again\""
+    }
+  ],
+  "riskFormulation": {
+    "riskLevel": "Low to moderate, based on transcript only",
+    "summary": "The transcript contains a past passive death wish during the initial divorce crisis, but the person denies being the suicidal type and does not describe current suicidal intent, plan, or self-harm behavior. Ongoing distress is evident through shame, loneliness, and trust injury. Risk should be clarified directly because the text includes a history of not wanting to live and self-hatred language.",
+    "warningSigns": [
+      "Past statement that he did not want to live at the beginning of the crisis",
+      "\"I sometimes even get to the point where I hate myself for what I allowed\"",
+      "Ongoing sorrow and loneliness",
+      "Prolonged separation from children and ongoing divorce conflict",
+      "Difficulty trusting people again"
+    ],
+    "protectiveBuffer": [
+      "States he is not the suicidal type",
+      "Reports extensive healing since the initial crisis",
+      "Ongoing support from Mr Louw Alberts, God, and his mother",
+      "Motivation to work on change and parenting",
+      "Child-focused concern and desire not to increase trauma"
+    ],
+    "followUpFocus": [
+      "Clarify current suicidal ideation, intent, plan, and access to means",
+      "Assess current self-harm thoughts when shame intensifies",
+      "Review coping strategies for loneliness and rejection",
+      "Confirm current supports and crisis contacts",
+      "Monitor risk around divorce-related escalation and emotional overwhelm"
+    ]
+  },
+  "protectiveFactors": [
+    {
+      "factor": "Denies being the suicidal type",
+      "whyItMatters": "Suggests no stated current identity with active suicidality, though this still requires direct assessment."
+    },
+    {
+      "factor": "Reports healing over time",
+      "whyItMatters": "Indicates some recovery and resilience after the initial crisis."
+    },
+    {
+      "factor": "Support from mother",
+      "whyItMatters": "Provides a relational support and space for reflection."
+    },
+    {
+      "factor": "Support from Mr Louw Alberts and God",
+      "whyItMatters": "He identifies both interpersonal and faith-based coping supports."
+    },
+    {
+      "factor": "Motivation to repair parenting and co-parenting",
+      "whyItMatters": "Future-oriented goals can support engagement and reduce hopelessness."
+    },
+    {
+      "factor": "Concern for children’s emotional wellbeing",
+      "whyItMatters": "Child-focused values may buffer against impulsive or retaliatory behavior."
+    }
+  ],
+  "reasoningModel": [
+    {
+      "step": "Identify the main stressor",
+      "whyItMatters": "The divorce and allegations appear to organize most of the distress and treatment needs.",
+      "evidence": "\"extremely messy divorce\"; \"falsely accused me\""
+    },
+    {
+      "step": "Separate past from current risk",
+      "whyItMatters": "The text includes a past passive death wish, but current intent is not described.",
+      "evidence": "\"in the beginning I didn't want to live anymore\"; \"I am not the suicidal type\""
+    },
+    {
+      "step": "Map treatment targets to stated needs",
+      "whyItMatters": "The person explicitly lists the areas where help is wanted, which should guide follow-up.",
+      "evidence": "Pornography, sexual boundaries, emotional regulation, insight/accountability, parental capacity, communication, self-esteem, reintegration therapy"
+    },
+    {
+      "step": "Note strengths and protective factors",
+      "whyItMatters": "These inform engagement and risk buffering.",
+      "evidence": "Support from mother, Mr Louw Alberts, God; willingness to work on issues; child-focused concern"
+    },
+    {
+      "step": "Flag unresolved clinical questions",
+      "whyItMatters": "Several important issues need direct follow-up, especially current safety and the specifics of reintegration planning.",
+      "evidence": "No current suicidal assessment; no details on current pornography use; no details on current contact arrangements"
+    }
+  ],
+  "evidenceModel": [
+    {
+      "claim": "The person is distressed by a prolonged divorce and allegations.",
+      "supportingEvidence": "\"extremely messy divorce\"; \"falsely accused me\"; \"broken and traumetized\""
+    },
+    {
+      "claim": "There was a past passive wish not to live.",
+      "supportingEvidence": "\"I didn't want to live anymore\"; \"I would have welcomed the end with a smile\""
+    },
+    {
+      "claim": "The person is motivated to avoid pornography relapse.",
+      "supportingEvidence": "\"just to make sure I do not have a relapse\""
+    },
+    {
+      "claim": "The person experiences shame about past sexual behavior.",
+      "supportingEvidence": "\"I sometimes even get to the point where I hate myself for what I allowed\""
+    },
+    {
+      "claim": "The person wants child-focused reintegration support.",
+      "supportingEvidence": "\"How and what do I say to them\"; \"I don't want to cause more pain and trauma than they already have\""
+    },
+    {
+      "claim": "The person reports trust difficulties.",
+      "supportingEvidence": "\"I am having issues even imagining trusting people again\""
+    },
+    {
+      "claim": "The person reports some social capacity despite fatigue.",
+      "supportingEvidence": "\"I do not mind to socialize, although it is draining\""
+    }
+  ],
+  "questionsAskedAndWhy": [],
+  "recommendedFollowUpQuestions": [
+    {
+      "question": "Are you having any thoughts right now of wanting to die, harming yourself, or not wanting to be here?",
+      "whyAsked": "To clarify current suicide risk given the past passive death wish.",
+      "answerEvidence": "Not answered in transcript"
+    },
+    {
+      "question": "Have you had any self-harm thoughts, plans, or behaviors since the beginning of the divorce crisis?",
+      "whyAsked": "To distinguish historical distress from current risk.",
+      "answerEvidence": "Not answered in transcript"
+    },
+    {
+      "question": "What is your current level of contact with the children, and what are the legal or practical barriers to seeing them?",
+      "whyAsked": "To understand the reintegration context and treatment planning needs.",
+      "answerEvidence": "Not answered in transcript"
+    },
+    {
+      "question": "Are you currently using pornography, and if so, how often and in what situations?",
+      "whyAsked": "To assess relapse risk and tailor prevention strategies.",
+      "answerEvidence": "Not answered in transcript"
+    },
+    {
+      "question": "What specific situations trigger shame, loneliness, anger, or urges to withdraw?",
+      "whyAsked": "To identify emotional regulation targets and coping plans.",
+      "answerEvidence": "Not answered in transcript"
+    },
+    {
+      "question": "What support systems do you currently rely on besides your mother and Mr Louw Alberts?",
+      "whyAsked": "To assess protective factors and practical support.",
+      "answerEvidence": "Not answered in transcript"
+    },
+    {
+      "question": "What guidance have you already received about speaking to the children about the separation?",
+      "whyAsked": "To avoid duplicating advice and to build on existing reintegration planning.",
+      "answerEvidence": "Not answered in transcript"
+    },
+    {
+      "question": "Do you have any current concerns about harming yourself or others during conflict with your ex-partner?",
+      "whyAsked": "To assess escalation risk in a high-conflict divorce context.",
+      "answerEvidence": "Not answered in transcript"
+    }
+  ],
+  "keywords": [
+    "divorce",
+    "false allegations",
+    "trauma",
+    "children",
+    "reintegration",
+    "pornography",
+    "sexual boundaries",
+    "emotional regulation",
+    "loneliness",
+    "anger",
+    "rejection",
+    "self-esteem",
+    "trust",
+    "co-parenting",
+    "accountability",
+    "shame",
+    "passive death wish",
+    "faith",
+    "God",
+    "mother support"
+  ],
+  "confidenceScore": 91,
+  "reviewerConsiderations": [
+    "Patient name in intake data is Harry, but transcript name is Eugene Mulder; report uses intake data exactly as instructed.",
+    "The transcript includes a past passive wish not to live; current risk is not established and should be directly assessed.",
+    "Claims about forensic investigations and innocence are patient-reported and not independently verified in the supplied data.",
+    "Gender is not specified in intake data; avoid gendered pronouns unless directly quoted or clearly supported by transcript language.",
+    "Faith is clearly present and should be considered in follow-up if clinically relevant."
+  ],
+  "facilitatorSummary": "This intake is from a person in a prolonged, high-conflict divorce who is seeking help with pornography relapse prevention, sexual boundaries, emotional regulation, shame, trust, parenting, and reintegration with children. The person reports a past period of not wanting to live at the start of the crisis but does not describe current suicidal intent in the text. The main clinical tasks are to clarify current safety, assess current coping and relapse risk, and support child-focused reintegration planning.",
+  "clinicalWorkingNotes": "Primary themes are divorce-related trauma, shame, and separation from children. The person presents as reflective, motivated, and child-focused, with some protective supports. The text contains a passive death wish history and self-hatred language, so direct suicide risk assessment is indicated. The person also requests structured help around pornography, sexual boundaries, and communication with the children and ex-partner. No diagnosis is inferred from the transcript.",
+  "faithAndMeaning": {
+    "present": true,
+    "summary": "Faith is explicitly mentioned as part of coping and recovery, alongside support from Mr Louw Alberts.",
+    "evidence": [
+      "\"with the help of Mr Louw Alberts and God, I was able to grow stronger\""
+    ],
+    "followUp": [
+      "Ask how faith is currently supporting coping and whether spiritual practices are part of recovery.",
+      "Ask whether the person wants faith-informed support integrated into care."
+    ]
+  }
+}

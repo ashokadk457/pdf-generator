@@ -21,7 +21,7 @@ Raw OpenAPI JSON: `http://localhost:3000/api-docs.json`
 - `src/laos_report_schema_v2.cjs` is an exact content copy of the latest client schema and includes the client's `buildLaosReportInstructions` function.
 - `src/extract-report.js` applies the latest service flow: Wendy-style instructions, intake metadata, transcript, model selection, metadata normalization, and the official OpenAI Responses API.
 - The supplied `clinical.js` belongs to a different CommonJS clinical-library/job router. Its applicable report-generation behavior was integrated without importing its unrelated job storage and router endpoints.
-- `src/pdf.js` maps the latest fields, including `caseCode` and `backgroundHistory`, into the existing PDF template.
+- `src/pdf.js` maps the latest fields, including `caseCode`, `sessionSummary`, `backgroundHistory`, and `recommendedFollowUpQuestions`, into the PDF template.
 - The schema is sent with `strict: false` because the exact client file defines optional properties; changing this to strict mode without revising its `required` arrays causes OpenAI schema validation errors.
 
 The uploaded patient's name, age, gender, language, intake type, and reference number are supplied as request metadata. Email and phone remain PDF contact fields; they are not added to the clinical model schema because the client schema does not define them.
@@ -32,7 +32,10 @@ The uploaded patient's name, age, gender, language, intake type, and reference n
 2. The server fills the client user-prompt template with the frozen references, metadata, and transcript.
 3. OpenAI's Responses API returns JSON constrained by the exact client schema.
 4. The server saves the complete parsed response to `output/json/WannaTalk-<reference>-<id>.json`.
-5. The server uses that saved response data to produce the downloadable PDF.
+5. The server converts the report into the exact ten-section payload expected by `python/render_laos_pdf.py` and saves it beside the report JSON.
+6. The unchanged client Python renderer creates the final branded PDF using `python/wannatalk logo2.png`.
+
+The server checks `PYTHON_PATH` first, then the bundled workspace Python, and then system Python installations. It selects the first interpreter that can import ReportLab. Install the renderer dependency with `python -m pip install reportlab` if it is not already available. `REPORT_PREPARED_BY` controls the cover-page preparer name.
 
 Run `npm run sample` to generate `output/pdf/WannaTalk-schema-sample.pdf` without calling an API.
 

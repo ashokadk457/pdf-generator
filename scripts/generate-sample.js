@@ -1,10 +1,13 @@
+import fs from "node:fs";
 import path from "node:path";
-import { createReportPdf } from "../src/pdf.js";
+import { createPythonPdfPayload } from "../src/pdf-payload.js";
+import { renderLaosPdfWithPython } from "../src/python-pdf.js";
 
 const metadata = { patientName: "Sample Patient", referenceNumber: "WT-SAMPLE-001", email: "sample@example.com", phone: "", intakeType: "text", sessionDate: "2026-08-26", language: "English", age: "51", gender: "Female" };
 const report = {
   reportTitle: "WannaTalk", reportSubtitle: "Intake report for clinical review", patientName: "Sample Patient", age: "51", gender: "Female", language: "English", intakeType: "text", reference: "WT-SAMPLE-001",
   executiveSummary: "The patient describes longstanding emotional pain connected to adverse childhood experiences, loneliness, relationship difficulty, and self-worth concerns. The narrative also shows insight, meaning-seeking, and engagement in healing.",
+  sessionSummary: "The patient discussed longstanding loneliness, early family adversity, relationship patterns, self-worth, and ongoing efforts toward healing.",
   presentingConcerns: [{ label: "Loneliness and relational difficulty", evidence: "The patient describes a long and lonely journey and difficulty navigating relationships." }, { label: "Self-worth", evidence: "The patient reports difficulty believing she is loved." }],
   backgroundHistory: [{ label: "Family environment", details: "The patient describes an unstable and emotionally neglectful childhood.", evidence: "Both parents are described as alcohol-dependent, cruel, and absent." }],
   clinicalThemes: [{ theme: "Attachment and belonging", meaning: "Early relational experiences may inform current difficulty feeling securely connected.", evidence: "The patient describes feeling like an outsider and waiting for parental love." }],
@@ -13,7 +16,7 @@ const report = {
   protectiveFactors: [{ factor: "Engagement in healing", whyItMatters: "Shows persistence and willingness to seek support." }],
   reasoningModel: [{ step: "Connect reported early experiences with current patterns", whyItMatters: "Provides a cautious working formulation without diagnosis.", evidence: "The patient explicitly describes these experiences as a recurring life theme." }],
   evidenceModel: [{ claim: "Relational pain is longstanding", supportingEvidence: "The patient describes this as a theme for most of her life." }],
-  questionsAskedAndWhy: [], confidenceScore: 85,
+  questionsAskedAndWhy: [], recommendedFollowUpQuestions: [{ question: "How safe do you feel currently?", whyAsked: "Current safety was not directly assessed in the transcript.", answerEvidence: "Not answered in transcript" }], confidenceScore: 85,
   keywords: ["loneliness", "attachment", "self-worth", "healing"], themesAndNotes: { themes: ["belonging", "recovery"], notes: ["Current safety requires direct assessment"] },
   reviewerConsiderations: ["Assess current safety and coping directly", "Clarify present supports"],
   facilitatorSummary: "The patient presents a reflective account of longstanding relational hurt, loneliness, and self-worth difficulty, with meaningful insight and engagement in healing.",
@@ -21,5 +24,8 @@ const report = {
   faithAndMeaning: { present: false, summary: "", evidence: [], followUp: [] },
 };
 const outputPath = path.resolve("output/pdf/WannaTalk-schema-sample.pdf");
-await createReportPdf({ metadata, report, logoPath: process.env.LOGO_PATH || "", outputPath, includeFaithSection: false });
+const payloadPath = path.resolve("output/json/WannaTalk-schema-sample-pdf-payload.json");
+fs.mkdirSync(path.dirname(payloadPath), { recursive: true });
+fs.writeFileSync(payloadPath, JSON.stringify(createPythonPdfPayload({ metadata, report, includeFaithSection: false }), null, 2), "utf8");
+await renderLaosPdfWithPython({ payloadPath, outputPath });
 console.log(outputPath);

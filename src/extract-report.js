@@ -14,9 +14,10 @@ function firstString(...values) {
 
 function normalizeReportMetadata(report, intake = {}) {
   const reportDate = firstString(intake.reportDate, report.reportDate, new Date().toISOString());
-  report.reportTitle = firstString(report.reportTitle, "LAOS Wendy Style Report");
-  report.caseCode = firstString(intake.referenceNumber, intake.reference, report.caseCode);
-  report.patientName = firstString(intake.patientName, intake.fullName, report.patientName);
+  report.reportTitle = firstString(intake.reportTitle, report.reportTitle, "LAOS Wendy Style Report");
+  report.reportSubtitle = firstString(intake.reportSubtitle, report.reportSubtitle);
+  report.caseCode = firstString(intake.caseCode, intake.referenceNumber, intake.reference, intake.jobId, report.caseCode, "Unknown");
+  report.patientName = firstString(intake.patientName, intake.name, intake.fullName, intake.clientName, "Unknown");
   report.sessionDate = firstString(intake.sessionDate, report.sessionDate, reportDate);
   report.reportDate = reportDate;
   report.language = firstString(intake.language, report.language, "en");
@@ -51,6 +52,7 @@ export async function extractLaosReport({ transcriptText, metadata = {}, reportS
       }],
     }],
     text: { format: { type: "json_schema", name: LAOS_REPORT_JSON_SCHEMA.name, schema: LAOS_REPORT_JSON_SCHEMA.schema, strict: false } },
+    temperature: 0.2,
     max_output_tokens: Number(process.env.OPENAI_MAX_OUTPUT_TOKENS || 8000),
   });
 

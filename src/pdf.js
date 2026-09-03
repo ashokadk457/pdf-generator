@@ -50,23 +50,25 @@ export function createReportPdf({ metadata, report, logoPath, outputPath, includ
   doc.y = y0 + profile.length * rh + 12;
 
   heading(1, "Executive Summary"); box(report.executiveSummary);
-  heading(2, "Presenting Concerns"); bullets(report.presentingConcerns, x => `${text(x.label)} - Evidence: ${text(x.evidence)}`);
-  heading(3, "Background and History"); bullets(report.backgroundHistory, x => `${text(x.label)}: ${text(x.details)} - Evidence: ${text(x.evidence)}`);
-  newPage(); heading(4, "Clinical Themes"); bullets(report.clinicalThemes, x => `${text(x.theme)} - ${text(x.meaning)} - Evidence: ${text(x.evidence)}`);
-  heading(5, "Clinical Observations"); bullets(report.clinicalObservations, x => `${text(x.observation)} - Implication: ${text(x.clinicalImplication)} - Evidence: ${text(x.evidence)}`);
-  heading(6, "Risk Formulation"); box(`Risk level: ${text(report.riskFormulation?.riskLevel, "Unknown")}\n\n${text(report.riskFormulation?.summary)}`);
+  heading(2, "Session Summary"); box(report.sessionSummary);
+  heading(3, "Presenting Concerns"); bullets(report.presentingConcerns, x => `${text(x.label)} - Evidence: ${text(x.evidence)}`);
+  heading(4, "Background and History"); bullets(report.backgroundHistory, x => `${text(x.label)}: ${text(x.details)} - Evidence: ${text(x.evidence)}`);
+  newPage(); heading(5, "Clinical Themes"); bullets(report.clinicalThemes, x => `${text(x.theme)} - ${text(x.meaning)} - Evidence: ${text(x.evidence)}`);
+  heading(6, "Clinical Observations"); bullets(report.clinicalObservations, x => `${text(x.observation)} - Implication: ${text(x.clinicalImplication)} - Evidence: ${text(x.evidence)}`);
+  heading(7, "Risk Formulation"); box(`Risk level: ${text(report.riskFormulation?.riskLevel, "Unknown")}\n\n${text(report.riskFormulation?.summary)}`);
   bullets([...(report.riskFormulation?.warningSigns || []).map(x => `Warning sign: ${x}`), ...(report.riskFormulation?.protectiveBuffer || []).map(x => `Protective buffer: ${x}`), ...(report.riskFormulation?.followUpFocus || []).map(x => `Follow-up: ${x}`)]);
-  heading(7, "Protective Factors"); bullets(report.protectiveFactors, x => `${text(x.factor)} - ${text(x.whyItMatters)}`);
-  newPage(); heading(8, "Reasoning Model"); bullets(report.reasoningModel, x => `${text(x.step)} - ${text(x.whyItMatters)} - Evidence: ${text(x.evidence)}`);
-  heading(9, "Evidence Model"); bullets(report.evidenceModel, x => `${text(x.claim)} - ${text(x.supportingEvidence)}`);
-  heading(10, "Questions Asked and Why"); bullets(report.questionsAskedAndWhy, x => `${text(x.question)} - Why: ${text(x.whyAsked)} - Answer/evidence: ${text(x.answerEvidence)}`, "No questions were recorded in the transcript.");
-  heading(11, "Confidence Score"); box(`${Number(report.confidenceScore || 0).toFixed(0)}%`);
-  heading(12, "Keywords / Themes / Notes"); bullets([
+  heading(8, "Protective Factors"); bullets(report.protectiveFactors, x => `${text(x.factor)} - ${text(x.whyItMatters)}`);
+  newPage(); heading(9, "Reasoning Model"); bullets(report.reasoningModel, x => `${text(x.step)} - ${text(x.whyItMatters)} - Evidence: ${text(x.evidence)}`);
+  heading(10, "Evidence Model"); bullets(report.evidenceModel, x => `${text(x.claim)} - ${text(x.supportingEvidence)}`);
+  heading(11, "Questions Asked and Why"); bullets(report.questionsAskedAndWhy, x => `${text(x.question)} - Why: ${text(x.whyAsked)} - Answer/evidence: ${text(x.answerEvidence)}`, "No questions were recorded in the transcript.");
+  heading(12, "Recommended Follow-up Questions"); bullets(report.recommendedFollowUpQuestions, x => `${text(x.question)} - Why: ${text(x.whyAsked)} - Answer/evidence: ${text(x.answerEvidence)}`, "No follow-up questions were recommended.");
+  heading(13, "Confidence Score"); box(`${Number(report.confidenceScore || 0).toFixed(0)}%`);
+  heading(14, "Keywords / Themes / Notes"); bullets([
     ...(report.keywords || []).map(x => `Keyword: ${x}`)
   ]);
-  heading(13, "Reviewer Considerations"); bullets(report.reviewerConsiderations);
-  ensure(180); heading(14, "Facilitator Summary"); box(report.facilitatorSummary);
-  ensure(170); heading(15, "Clinical Working Notes"); box(report.clinicalWorkingNotes);
+  heading(15, "Reviewer Considerations"); bullets(report.reviewerConsiderations);
+  ensure(180); heading(16, "Facilitator Summary"); box(report.facilitatorSummary);
+  ensure(170); heading(17, "Clinical Working Notes"); box(report.clinicalWorkingNotes);
 
   if (includeFaithSection && report.faithAndMeaning?.present) {
     ensure(170); doc.font("Helvetica-Bold").fontSize(14).fillColor(NAVY).text("Faith / Meaning Framework");

@@ -6,7 +6,8 @@ import express from "express";
 import multer from "multer";
 import swaggerUi from "swagger-ui-express";
 import { extractLaosReport } from "./extract-report.js";
-import { createReportPdf } from "./pdf.js";
+import { createPythonPdfPayload } from "./pdf-payload.js";
+import { renderLaosPdfWithPython } from "./python-pdf.js";
 import { openApiSpec } from "./openapi.js";
 
 const app = express();
@@ -39,8 +40,12 @@ app.post("/api/reports", upload.single("transcript"), async (req, res) => {
     const jsonOutputPath = path.join(jsonOutputDir, `WannaTalk-${safeRef}-${reportId}.json`);
     fs.writeFileSync(jsonOutputPath, JSON.stringify(report, null, 2), "utf8");
     console.log(`OpenAI report JSON saved: ${jsonOutputPath}`);
+    const pdfPayload = createPythonPdfPayload({ report, metadata, includeFaithSection });
+    const payloadPath = path.join(jsonOutputDir, `WannaTalk-${safeRef}-${reportId}-pdf-payload.json`);
+    fs.writeFileSync(payloadPath, JSON.stringify(pdfPayload, null, 2), "utf8");
+    console.log(`Python PDF payload saved: ${payloadPath}`);
     const outputPath = path.join(outputDir, `WannaTalk-${safeRef}-${reportId}.pdf`);
-    await createReportPdf({ metadata, report, logoPath: process.env.LOGO_PATH || "", outputPath, includeFaithSection });
+    await renderLaosPdfWithPython({ payloadPath, outputPath });
     res.download(outputPath, `WannaTalk-${safeRef}.pdf`);
   } catch (error) { console.error(error); res.status(500).json({ error: "The report could not be generated.", details: error.message }); }
   finally { if (uploadedPath) fs.rmSync(uploadedPath, { force: true }); }

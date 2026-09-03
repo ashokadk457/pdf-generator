@@ -1,0 +1,177 @@
+{
+  "title": "WannaTalk",
+  "summary": "The patient describes longstanding emotional pain connected to adverse childhood experiences, loneliness, relationship difficulty, and self-worth concerns. The narrative also shows insight, meaning-seeking, and engagement in healing.",
+  "reportText": "The patient describes longstanding emotional pain connected to adverse childhood experiences, loneliness, relationship difficulty, and self-worth concerns. The narrative also shows insight, meaning-seeking, and engagement in healing.\n\nThe patient discussed longstanding loneliness, early family adversity, relationship patterns, self-worth, and ongoing efforts toward healing.\n\nThe patient presents a reflective account of longstanding relational hurt, loneliness, and self-worth difficulty, with meaningful insight and engagement in healing.\n\nWorking summary only; compare with the original transcript and complete direct safety assessment.",
+  "meta": {
+    "caseCode": "WT-SAMPLE-001",
+    "caseName": "",
+    "patient": "Sample Patient",
+    "language": "English",
+    "sessionDate": "2026-08-26",
+    "preparedBy": "Louw Alberts",
+    "status": "Working draft"
+  },
+  "sections": [
+    {
+      "title": "1. DSP Identification",
+      "kind": "table",
+      "columns": [
+        "Field",
+        "Value"
+      ],
+      "rows": [
+        [
+          "Case code",
+          "WT-SAMPLE-001"
+        ],
+        [
+          "Patient",
+          "Sample Patient"
+        ],
+        [
+          "Session date",
+          "2026-08-26"
+        ],
+        [
+          "Language",
+          "English"
+        ],
+        [
+          "Age",
+          "51"
+        ],
+        [
+          "Gender",
+          "Female"
+        ],
+        [
+          "Intake type",
+          "text"
+        ],
+        [
+          "Contact",
+          "sample@example.com"
+        ]
+      ]
+    },
+    {
+      "title": "2. Presenting Concern",
+      "kind": "bullets",
+      "bullets": [
+        "Executive summary: The patient describes longstanding emotional pain connected to adverse childhood experiences, loneliness, relationship difficulty, and self-worth concerns. The narrative also shows insight, meaning-seeking, and engagement in healing.",
+        "Session summary: The patient discussed longstanding loneliness, early family adversity, relationship patterns, self-worth, and ongoing efforts toward healing.",
+        "Loneliness and relational difficulty - Evidence: The patient describes a long and lonely journey and difficulty navigating relationships.",
+        "Self-worth - Evidence: The patient reports difficulty believing she is loved.",
+        "Family environment - The patient describes an unstable and emotionally neglectful childhood. - Evidence: Both parents are described as alcohol-dependent, cruel, and absent."
+      ]
+    },
+    {
+      "title": "3. Key Observations",
+      "kind": "bullets",
+      "bullets": [
+        "Attachment and belonging - Early relational experiences may inform current difficulty feeling securely connected. - Evidence: The patient describes feeling like an outsider and waiting for parental love.",
+        "The written narrative is reflective and coherent. - The account provides usable self-reported history while direct behavioural observation remains unavailable. - Evidence: The transcript links past experiences to current relationship patterns.",
+        "Risk level: Unknown - current safety not assessed",
+        "The transcript contains vulnerability factors but no direct current-safety assessment.",
+        "Warning sign: Emotional distress",
+        "Warning sign: Loneliness",
+        "Protective buffer: Help-seeking",
+        "Protective buffer: Meaning-seeking",
+        "Engagement in healing - Shows persistence and willingness to seek support."
+      ]
+    },
+    {
+      "title": "4. Questions Asked and Why",
+      "kind": "table",
+      "columns": [
+        "Question",
+        "Why asked",
+        "Answer / evidence"
+      ],
+      "rows": []
+    },
+    {
+      "title": "5. Reasoning Model",
+      "kind": "table",
+      "columns": [
+        "Step",
+        "Why it matters",
+        "Evidence"
+      ],
+      "rows": [
+        [
+          "Connect reported early experiences with current patterns",
+          "Provides a cautious working formulation without diagnosis.",
+          "The patient explicitly describes these experiences as a recurring life theme."
+        ]
+      ]
+    },
+    {
+      "title": "6. Evidence Model",
+      "kind": "table",
+      "columns": [
+        "Claim",
+        "Supporting evidence"
+      ],
+      "rows": [
+        [
+          "Relational pain is longstanding",
+          "The patient describes this as a theme for most of her life."
+        ]
+      ]
+    },
+    {
+      "title": "7. Confidence and Uncertainty",
+      "kind": "bullets",
+      "bullets": [
+        "Confidence score: 85%",
+        "Assess current safety and coping directly",
+        "Clarify present supports"
+      ]
+    },
+    {
+      "title": "8. Keywords and Patient Bible Notes",
+      "kind": "bullets",
+      "bullets": [
+        "Keyword: loneliness",
+        "Keyword: attachment",
+        "Keyword: self-worth",
+        "Keyword: healing",
+        "Working summary only; compare with the original transcript and complete direct safety assessment."
+      ]
+    },
+    {
+      "title": "9. LAOS Learning Summary",
+      "kind": "text",
+      "text": "The patient presents a reflective account of longstanding relational hurt, loneliness, and self-worth difficulty, with meaningful insight and engagement in healing."
+    },
+    {
+      "title": "10. Follow-up and Next Steps",
+      "kind": "table",
+      "columns": [
+        "Question",
+        "Why ask",
+        "Answer / evidence"
+      ],
+      "rows": [
+        [
+          "How safe do you feel currently?",
+          "Current safety was not directly assessed in the transcript.",
+          "Not answered in transcript"
+        ],
+        [
+          "Assess current safety directly",
+          "Risk formulation follow-up",
+          "Not answered in transcript"
+        ],
+        [
+          "Clarify support network",
+          "Risk formulation follow-up",
+          "Not answered in transcript"
+        ]
+      ]
+    }
+  ],
+  "faithSection": null,
+  "includeFaithAppendix": false
+}

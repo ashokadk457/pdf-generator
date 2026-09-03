@@ -10,6 +10,7 @@ const LAOS_REPORT_JSON_SCHEMA = {
       "sessionDate",
       "language",
       "executiveSummary",
+      "sessionSummary",
       "presentingConcerns",
       "backgroundHistory",
       "clinicalThemes",
@@ -19,6 +20,7 @@ const LAOS_REPORT_JSON_SCHEMA = {
       "reasoningModel",
       "evidenceModel",
       "questionsAskedAndWhy",
+      "recommendedFollowUpQuestions",
       "keywords",
       "confidenceScore",
       "reviewerConsiderations",
@@ -35,6 +37,7 @@ const LAOS_REPORT_JSON_SCHEMA = {
       language: { type: "string" },
       sourceTranscriptLanguage: { type: "string" },
       executiveSummary: { type: "string" },
+      sessionSummary: { type: "string" },
       presentingConcerns: {
         type: "array",
         items: {
@@ -148,6 +151,19 @@ const LAOS_REPORT_JSON_SCHEMA = {
           },
         },
       },
+      recommendedFollowUpQuestions: {
+        type: "array",
+        items: {
+          type: "object",
+          additionalProperties: false,
+          required: ["question", "whyAsked", "answerEvidence"],
+          properties: {
+            question: { type: "string" },
+            whyAsked: { type: "string" },
+            answerEvidence: { type: "string" },
+          },
+        },
+      },
       keywords: { type: "array", items: { type: "string" } },
       confidenceScore: { type: "number" },
       reviewerConsiderations: { type: "array", items: { type: "string" } },
@@ -187,6 +203,11 @@ function buildLaosReportInstructions({ includeFaithSection = false } = {}) {
     "Every key conclusion should be supported by transcript evidence or intake metadata.",
     "Do not limit the number of themes, keywords, questions, or evidence items to a small fixed number if the transcript supports more.",
     "Include all clinically relevant items that are supported by the transcript; do not truncate lists to an arbitrary count.",
+    "Write sessionSummary as a plain-language account of what the patient discussed, in enough detail for a facilitator to understand the session without reading the full transcript.",
+    "Questions Asked and Why must contain only questions actually asked by the facilitator in the transcript. Do not invent facilitator questions. If none are present, return an empty array.",
+    "Put clarifying questions that should be asked at follow-up in recommendedFollowUpQuestions, and label their evidence as Not answered in transcript when appropriate.",
+    "Do not infer or invent sex, gender, age, pronouns, diagnosis, or identity. Use gendered pronouns only when the transcript or intake metadata explicitly supports them.",
+    "Treat legal, forensic, medical, safeguarding, and historical-risk claims as patient-reported unless corroborating records are included in the supplied data.",
     faithNote,
   ].join(" ");
 }
